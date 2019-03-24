@@ -1,1 +1,17 @@
 FROM mesosphere/aws-cli
+
+ENV S3_URL s3://your-bucket-path
+ENV VOLUME_PATH /data
+ENV SYNC_INTERVAL_SECONDS 60
+ENV SYNC_ONCE no
+ENV S3_UPLOAD yes
+ENV S3_UPLOAD_DELETE no
+ENV S3_DOWNLOAD yes
+ENV S3_DOWNLOAD_DELETE no
+ENV S3_REDOWNLOAD no
+
+VOLUME /data
+
+ADD run.sh /run.sh
+
+ENTRYPOINT /bin/sh /run.sh
