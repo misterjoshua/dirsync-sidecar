@@ -1,14 +1,23 @@
 FROM mesosphere/aws-cli
 
-ENV S3_URL s3://your-bucket-path
 ENV VOLUME_PATH /data
+
+# A place for the container user to perform custom initialization.
+ENV INITIALIZE_EXPRESSION true
+
+ENV UPLOAD_DELETE_UNKNOWN no
+ENV DOWNLOAD_DELETE_UNKNOWN no
+
+# Initial download settings.
+ENV INITIAL_DOWNLOAD_CONDITION true
+
+# Continuous sync settings.
 ENV SYNC_INTERVAL_SECONDS 60
+ENV SYNC_UP yes
+ENV SYNC_DOWN no
 ENV SYNC_ONCE no
-ENV S3_UPLOAD yes
-ENV S3_UPLOAD_DELETE no
-ENV S3_DOWNLOAD yes
-ENV S3_DOWNLOAD_DELETE no
-ENV S3_REDOWNLOAD no
+
+ENV S3_URL s3://your-bucket-path
 
 VOLUME /data
 
