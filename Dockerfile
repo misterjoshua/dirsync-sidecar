@@ -12,6 +12,6 @@ ENV S3_REDOWNLOAD no
 
 VOLUME /data
 
-ADD run.sh /run.sh
+ADD s3.sh /s3.sh
 
-ENTRYPOINT /bin/sh /run.sh
+ENTRYPOINT /bin/sh /s3.sh
