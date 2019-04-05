@@ -4,6 +4,7 @@ ENV VOLUME_PATH /data
 
 # A place for the container user to perform custom initialization.
 ENV INITIALIZE_EXPRESSION true
+ENV POST_SYNC_EXPRESSION true
 
 ENV UPLOAD_DELETE_UNKNOWN no
 ENV DOWNLOAD_DELETE_UNKNOWN no
@@ -16,6 +17,7 @@ ENV SYNC_INTERVAL_SECONDS 60
 ENV SYNC_UP yes
 ENV SYNC_DOWN no
 ENV SYNC_ONCE no
+
 
 ENV S3_URL s3://your-bucket-path
 

@@ -37,6 +37,10 @@ if [ "$INITIAL_DOWNLOAD" = "yes" ]; then
     aws s3 sync $DOWNLOAD_OPTIONS "$S3_URL" "$VOLUME_PATH"
 fi
 
+if [ ! -z "$POST_SYNC_EXPRESSION" ]; then
+    eval "$POST_SYNC_EXPRESSION"
+fi
+
 # Periodically sync up/down
 while true; do
     echo "Sleeping for $SYNC_INTERVAL_SECONDS seconds"
@@ -50,6 +54,10 @@ while true; do
     if [ "$SYNC_UP" = "yes" ]; then
         echo "Uploading from $VOLUME_PATH to $S3_URL"
         aws s3 sync $UPLOAD_OPTIONS "$VOLUME_PATH" "$S3_URL"
+    fi
+
+    if [ ! -z "$POST_SYNC_EXPRESSION" ]; then
+        eval "$POST_SYNC_EXPRESSION"
     fi
 
     if [ "$SYNC_ONCE" = "yes" ]; then
