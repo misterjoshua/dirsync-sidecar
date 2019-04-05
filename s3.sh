@@ -2,8 +2,8 @@
 
 set -ex
 
-DOWNLOAD_OPTIONS=""
-UPLOAD_OPTIONS=""
+DOWNLOAD_OPTIONS="--no-progress"
+UPLOAD_OPTIONS="--no-progress"
 
 # Give the caller a chance to do their own intialization
 if [ ! -z "$INITIALIZE_EXPRESSION" ]; then
